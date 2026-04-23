@@ -1,6 +1,5 @@
 import SwiftUI
 
-@available(macOS 11, iOS 14, tvOS 14, watchOS 9, *)
 public struct NewChatButton: View {
     private let disabled: Bool
     private let action: () -> ()

@@ -10,7 +10,6 @@ public struct ChatMessage: Identifiable {
         self.text = text
     }
     
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     public var renderedText: AttributedString {
         do {
             return try AttributedString(

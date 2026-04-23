@@ -4,6 +4,11 @@ import PackageDescription
 
 let package = Package(
     name: "ChitChat",
+    platforms: [
+        .iOS(.v26),
+        .visionOS(.v26),
+        .macOS(.v26)
+    ],
     products: [
         .library(name: "ChitChat", targets: ["ChitChat"])
     ],
