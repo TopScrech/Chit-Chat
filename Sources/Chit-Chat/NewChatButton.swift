@@ -13,5 +13,6 @@ public struct NewChatButton: View {
     public var body: some View {
         Button("New Chat", systemImage: "square.and.pencil", action: action)
             .disabled(disabled)
+            .keyboardShortcut("n")
     }
 }
