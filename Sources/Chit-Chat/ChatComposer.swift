@@ -1,5 +1,6 @@
 import ScrechKit
 
+@available(iOS 26, macOS 26, *)
 public struct ChatComposer: View {
     @Binding private var prompt: String
     @Binding private var isResponding: Bool
