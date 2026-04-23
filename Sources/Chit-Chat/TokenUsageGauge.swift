@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 /// Provide a value between 0.0 & 1.0
 @available(macOS 13, iOS 16, watchOS 7, *)
@@ -15,7 +15,7 @@ public struct TokenUsageGauge: View {
         Gauge(value: value) {}
             .gaugeStyle(.accessoryCircularCapacity)
             .scaleEffect(0.5)
-            .frame(width: 30, height: 30)
+            .frame(30)
             .tint(.green)
             .animation(.default, value: value)
             .onTapGesture(perform: action)

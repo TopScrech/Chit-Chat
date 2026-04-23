@@ -7,8 +7,14 @@ let package = Package(
     products: [
         .library(name: "ChitChat", targets: ["ChitChat"])
     ],
+    dependencies: [
+        .package(url: "https://github.com/TopScrech/ScrechKit", branch: "main")
+    ],
     targets: [
-        .target(name: "ChitChat")
+        .target(
+            name: "ChitChat",
+            dependencies: ["ScrechKit"]
+        )
     ],
     swiftLanguageModes: [.v6]
 )

@@ -1,0 +1,45 @@
+import ScrechKit
+
+@available(iOS 26, visionOS 26, *)
+public struct ChatComposer: View {
+    @Binding private var prompt: String
+    @Binding private var isResponding: Bool
+    private let sendPrompt: () -> ()
+    
+    public init(prompt: Binding<String>, isResponding: Binding<Bool>, sendPrompt: @escaping () -> Void) {
+        _prompt = prompt
+        _isResponding = isResponding
+        self.sendPrompt = sendPrompt
+    }
+    
+    @FocusState private var isFocused
+    
+    public var body: some View {
+        HStack {
+            TextField("Type here...", text: $prompt)
+                .onSubmit(sendPrompt)
+                .frame(height: 35)
+                .padding(.horizontal, 10)
+#if !os(visionOS)
+                .glassEffect()
+#endif
+                .focused($isFocused)
+                .submitLabel(.send)
+                .disabled(isResponding)
+            
+            Button("Send", systemImage: "paperplane", action: sendPrompt)
+                .frame(35)
+                .labelStyle(.iconOnly)
+                .foregroundStyle(.foreground)
+#if !os(visionOS)
+                .glassEffect()
+#endif
+                .fontSize(16)
+                .disabled(isResponding || prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        }
+        .padding()
+        .task {
+            isFocused = true
+        }
+    }
+}
