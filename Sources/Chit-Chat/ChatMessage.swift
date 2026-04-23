@@ -5,6 +5,11 @@ public struct ChatMessage: Identifiable {
     public let role: ChatMessageRole
     public var text: String
     
+    public init(role: ChatMessageRole, text: String) {
+        self.role = role
+        self.text = text
+    }
+    
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     public var renderedText: AttributedString {
         do {
