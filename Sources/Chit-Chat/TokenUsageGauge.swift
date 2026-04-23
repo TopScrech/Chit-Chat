@@ -11,12 +11,24 @@ public struct TokenUsageGauge: View {
         self.action = action
     }
     
+    private var tint: Color {
+        if value == 0 {
+            .gray
+        } else if (0...0.5).contains(value) {
+            .green
+        } else if (0.5...0.75).contains(value) {
+            .orange
+        } else {
+            .red
+        }
+    }
+    
     public var body: some View {
         Gauge(value: value) {}
             .gaugeStyle(.accessoryCircularCapacity)
             .scaleEffect(0.5)
             .frame(30)
-            .tint(.green)
+            .tint(tint)
             .animation(.default, value: value)
             .onTapGesture(perform: action)
     }
