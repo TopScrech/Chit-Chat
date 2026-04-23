@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(iOS 26, macOS 26, *)
 public struct ChatActionButton: View {
     private let title: String
     private let systemImage: String
