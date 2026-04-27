@@ -5,17 +5,32 @@ public struct ChatComposer: View {
     @Binding private var prompt: String
     @Binding private var isResponding: Bool
     private let sendPrompt: () -> ()
+    private let stopAction: (() -> ())?
     
-    public init(prompt: Binding<String>, isResponding: Binding<Bool>, sendPrompt: @escaping () -> Void) {
+    public init(
+        prompt: Binding<String>,
+        isResponding: Binding<Bool>,
+        sendPrompt: @escaping () -> (),
+        stopAction: (() -> ())? = nil
+    ) {
         _prompt = prompt
         _isResponding = isResponding
         self.sendPrompt = sendPrompt
+        self.stopAction = stopAction
     }
     
     @FocusState private var isFocused
     
     public var body: some View {
         HStack {
+            if let stopAction {
+                Button("Stop", systemImage: "stop.fill", role: .destructive, action: stopAction)
+                    .buttonStyle(.glass)
+                    .tint(.red)
+                    .frame(35)
+                    .labelStyle(.iconOnly)
+            }
+            
             TextField("Type here...", text: $prompt)
                 .onSubmit(sendPrompt)
                 .frame(height: 35)
