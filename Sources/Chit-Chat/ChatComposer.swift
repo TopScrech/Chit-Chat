@@ -25,9 +25,9 @@ public struct ChatComposer: View {
         HStack {
             if let stopAction {
                 Button("Stop", systemImage: "stop.fill", role: .destructive, action: stopAction)
+                    .frame(35)
                     .buttonStyle(.glass)
                     .tint(.red)
-                    .frame(35)
                     .labelStyle(.iconOnly)
             }
             
