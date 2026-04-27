@@ -4,22 +4,23 @@ import ScrechKit
 public struct ChatComposer: View {
     @Binding private var prompt: String
     @Binding private var isResponding: Bool
+    @FocusState.Binding private var isFocused: Bool
     private let sendPrompt: () -> ()
     private let stopAction: (() -> ())?
     
     public init(
         prompt: Binding<String>,
         isResponding: Binding<Bool>,
+        isFocused: FocusState<Bool>.Binding,
         sendPrompt: @escaping () -> (),
         stopAction: (() -> ())? = nil
     ) {
         _prompt = prompt
         _isResponding = isResponding
+        _isFocused = isFocused
         self.sendPrompt = sendPrompt
         self.stopAction = stopAction
     }
-    
-    @FocusState private var isFocused
     
     public var body: some View {
         HStack {
@@ -55,8 +56,5 @@ public struct ChatComposer: View {
                 .disabled(isResponding || prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
         }
         .padding()
-        .task {
-            isFocused = true
-        }
     }
 }
