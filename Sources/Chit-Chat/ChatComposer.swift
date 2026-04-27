@@ -26,7 +26,9 @@ public struct ChatComposer: View {
             if let stopAction {
                 Button("Stop", systemImage: "stop.fill", role: .destructive, action: stopAction)
                     .frame(35)
-                    .buttonStyle(.glass)
+#if !os(visionOS)
+                    .glassEffect()
+#endif
                     .tint(.red)
                     .labelStyle(.iconOnly)
             }
