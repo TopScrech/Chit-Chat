@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "ChitChat", targets: ["ChitChat"])
     ],
     dependencies: [
-        .package(url: "https://github.com/TopScrech/ScrechKit", branch: "main")
+        .package(url: "https://github.com/TopScrech/ScrechKit", from: "1.0.0")
     ],
     targets: [
         .target(
