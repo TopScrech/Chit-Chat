@@ -1,13 +1,13 @@
 {
-  "originHash" : "01f4d0ba30b03609b1b9ad6e9b7ad8b4bb7bace03c871dbb9a7a746aaefb4a47",
+  "originHash" : "299f22aeea02fdaf42b2817a69ede7e7ce15782ea8eb87a4b708863062c12dbe",
   "pins" : [
     {
       "identity" : "screchkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
-        "revision" : "a9ec3560ca613c10fa6f7aae2ab73a1c1a1ac3bb",
-        "version" : "1.0.3"
+        "revision" : "b042653a85530e387eb5036a49983918d6511276",
+        "version" : "1.0.4"
       }
     }
   ],
