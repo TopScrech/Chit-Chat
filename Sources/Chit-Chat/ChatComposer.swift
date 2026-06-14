@@ -22,6 +22,10 @@ public struct ChatComposer: View {
         self.stopAction = stopAction
     }
     
+    private var sendButtonDisabled: Bool {
+        isResponding || prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+    
     public var body: some View {
         HStack {
             if let stopAction {
@@ -49,12 +53,12 @@ public struct ChatComposer: View {
                 .frame(35)
                 .contentShape(.rect)
                 .labelStyle(.iconOnly)
-                .foregroundStyle(.foreground)
+                .foregroundStyle(sendButtonDisabled ? .secondary : .primary)
 #if !os(visionOS)
                 .glassEffect()
 #endif
                 .fontSize(16)
-                .disabled(isResponding || prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                .disabled(sendButtonDisabled)
         }
         .padding()
     }
