@@ -47,6 +47,7 @@ public struct ChatComposer: View {
             
             Button("Send", systemImage: "paperplane", action: sendPrompt)
                 .frame(35)
+                .contentShape(.rect)
                 .labelStyle(.iconOnly)
                 .foregroundStyle(.foreground)
 #if !os(visionOS)
