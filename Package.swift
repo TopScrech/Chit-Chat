@@ -17,5 +17,5 @@ let package = Package(
     ],
     targets: [
         .target(name: "ChitChat", dependencies: ["ScrechKit"])
-    ],
+    ]
 )
